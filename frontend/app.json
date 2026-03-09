@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "LetsPlay",
+    "slug": "letsplay",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#020617"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.letsplay.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "LetsPlay needs microphone access for voice chat in rooms.",
+        "NSCameraUsageDescription": "LetsPlay needs camera access for video features."
+      }
+    },
+    "android": {
+      "package": "com.letsplay.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#020617",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3d1b61de-a1d1-4a53-b88e-65f835b61473"
+      }
+    }
+  }
+}

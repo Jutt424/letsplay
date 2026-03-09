@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+dist/
+web-build/
+.env
+.env.*
+\!.env.example
+expo-env.d.ts
+
+# Android build outputs
+android/.gradle/
+android/build/
+android/app/build/
+android/**/build/
+android/**/.gradle/
+android/local.properties
