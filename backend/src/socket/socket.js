@@ -93,14 +93,22 @@ export const initSocket = (io) => {
           .select('is_muted, users:user_id (id, username, avatar_url)')
           .eq('room_id', roomId);
 
-        io.to(roomId).emit('room:members_updated', { members });
+        const { data: roomInfo } = await supabase
+          .from('rooms')
+          .select('host_id')
+          .eq('id', roomId)
+          .single();
+
+        const hostId = roomInfo?.host_id;
+
+        io.to(roomId).emit('room:members_updated', { members, hostId });
         if (!isRejoining) {
           socket.to(roomId).emit('room:user_joined', {
             user: { id: socket.user.id, username: socket.user.username },
           });
         }
 
-        socket.emit('room:joined', { roomId, members });
+        socket.emit('room:joined', { roomId, members, hostId });
       } catch (err) {
         console.error('room:join error:', err);
         socket.emit('error', { message: 'Could not join room' });
