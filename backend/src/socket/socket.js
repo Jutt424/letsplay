@@ -388,6 +388,9 @@ export const initSocket = (io) => {
     socket.on('disconnect', async () => {
       console.log(`User disconnected: ${socket.user.username}`);
       await supabase.from('users').update({ is_online: false }).eq('id', socket.user.id);
+      if (socket.currentRoom) {
+        await handleLeaveRoom(socket, io, socket.currentRoom);
+      }
     });
   });
 };
